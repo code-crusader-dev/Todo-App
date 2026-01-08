@@ -8,7 +8,9 @@ A clean and minimal **Todo App** built using **React Native** and **Expo** with 
 
 Click the button below to see the app in action instantly. No setup, no commands — just open and try it 👇
 
-[![Open in Expo Go](https://img.shields.io/badge/Open%20in-Expo%20Go-4F46E5?style=for-the-badge\&logo=expo)](https://u.expo.dev/a4f39489-cf29-4a30-a7c3-ddc4225c3a2b)
+[![Open in Expo Go](https://img.shields.io/badge/Open%20in-Expo%20Go-4F46E5?style=for-the-badge&logo=expo)](https://expo.dev/@code-crusader-dev/TodoApp
+)
+
 
 > 📱 Open this link using the **Expo Go** app on Android or iOS.
 
