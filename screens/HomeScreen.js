@@ -1,11 +1,42 @@
 import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { COLORS } from "../utils/theme";
 import { SPACING, RADIUS } from "../utils/layout";
 import { inkShadow } from "../utils/shadow";
 
+const STORAGE_KEY = "TASKS";
+
 export default function HomeScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
+
+  // Load tasks on app start
+  useEffect(() => {
+    async function loadTasks() {
+      try {
+        const storedTasks = await AsyncStorage.getItem(STORAGE_KEY);
+        if (storedTasks) {
+          setTasks(JSON.parse(storedTasks));
+        }
+      } catch (error) {
+        console.log("Failed to load tasks", error);
+      }
+    }
+    loadTasks();
+  }, []);
+
+  // Save tasks whenever they change
+  useEffect(() => {
+    async function saveTasks() {
+      try {
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      } catch (error) {
+        console.log("Failed to save tasks", error);
+      }
+    }
+    saveTasks();
+  }, [tasks]);
 
   function addTaskHandler(title) {
     setTasks((current) => [
@@ -19,9 +50,7 @@ export default function HomeScreen({ navigation }) {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>My Tasks</Text>
-        <Text style={styles.subtitle}>
-          Stay calm. One task at a time.
-        </Text>
+        <Text style={styles.subtitle}>Stay calm. One task at a time.</Text>
       </View>
 
       {/* Task List */}
