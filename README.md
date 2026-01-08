@@ -6,6 +6,13 @@ A clean and minimal **Todo App** built using **React Native** and **Expo** with 
 
 ## 🚀 Live Preview
 
+## 📱 Scan to Open App (Expo Go)
+
+Scan this QR code using the **Expo Go** app on Android or iOS:
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=exp://expo.dev/@code-crusader-dev/TodoApp" width="220" />
+
+
 Click the button below to see the app in action instantly. No setup, no commands — just open and try it 👇
 
 [![Open in Expo Go](https://img.shields.io/badge/Open%20in-Expo%20Go-4F46E5?style=for-the-badge&logo=expo)](https://expo.dev/accounts/code-crusader-dev/projects/TodoApp)
