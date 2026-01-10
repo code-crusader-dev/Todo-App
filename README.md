@@ -5,7 +5,7 @@ A clean and minimal **Todo App** built using **React Native** and **Expo** with 
 ---
 ## 📸 App Preview
 
-<img width="230" height="529" alt="Screenshot 2026-01-08 214708" src="https://github.com/user-attachments/assets/2c15abd8-f384-47f1-b9e6-c78f541d4878" />
+<img width="230" height="529" alt="Screenshot 2026-01-08 214708" src="https://qr.expo.dev/eas-update?updateId=95686cc6-e8b4-4dd3-a90b-355961b9cc76" />
 
 
 ## 🚀 Live Preview
