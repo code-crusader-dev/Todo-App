@@ -22,7 +22,7 @@ Scan this QR code using the **Expo Go** app on Android or iOS:
 
 Click the button below to see the app in action instantly. No setup, no commands — just open and try it 👇
 
-[![Open in Expo Go](https://img.shields.io/badge/Open%20in-Expo%20Go-4F46E5?style=for-the-badge&logo=expo)](https://expo.dev/accounts/code-crusader-dev/projects/TodoApp)
+[![Open in Expo Go](https://img.shields.io/badge/Open%20in-Expo%20Go-4F46E5?style=for-the-badge&logo=expo)](https://expo.dev/accounts/code-crusader-dev/projects/TodoApp/updates/95686cc6-e8b4-4dd3-a90b-355961b9cc76)
 
 
 
