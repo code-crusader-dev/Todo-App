@@ -3,6 +3,9 @@
     "name": "TodoApp",
     "slug": "TodoApp",
     "version": "1.0.0",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
