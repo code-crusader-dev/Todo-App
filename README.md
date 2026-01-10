@@ -57,6 +57,9 @@ TodoApp/
 │
 ├─ App.js
 ├─ assets/
+├─ utils/
+│ ├─ theme.js
+│ └─ storage.js
 ├─ components/
 │   ├─ TaskCard.js
 │   ├─ Button.js
@@ -89,7 +92,9 @@ This project was built as a learning and showcase app to practice:
 * React Native fundamentals
 * State management
 * Component-based architecture
-* Clean UI design
+* Navigation handling
+* Local data persistence
+* Clean UI & UX design
 
 ---
 
