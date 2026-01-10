@@ -26,13 +26,12 @@ Click the button below to see the app in action instantly. No setup, no commands
 
 
 
-[![Open in Expo Go](https://img.shields.io/badge/OPEN%20IN-EXPO%20GO-4F46E5?style=for-the-badge&logo=expo&logoColor=white)](exp://u.expo.dev/a4f39489-cf29-4a30-a7c3-ddc4225c3a2b/group/95686cc6-e8b4-4dd3-a90b-355961b9cc76)
+[![Open in Expo Go](https://img.shields.io/badge/OPEN%20IN-EXPO%20GO-4F46E5?style=for-the-badge&logo=expo&logoColor=white)](https://expo.dev/@code-crusader-dev/TodoApp?release-channel=defaul)
 
 
 
 
 
-# exp://u.expo.dev/a4f39489-cf29-4a30-a7c3-ddc4225c3a2b/group/95686cc6-e8b4-4dd3-a90b-355961b9cc76
 
 > 📱 Open this link using the **Expo Go** app on Android or iOS.
 
