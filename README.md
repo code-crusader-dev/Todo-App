@@ -3,6 +3,10 @@
 A clean and minimal **Todo App** built using **React Native** and **Expo** with a modern dark aesthetic. This project focuses on simplicity, usability, and clean UI — perfect for showcasing on **GitHub** and **LinkedIn**.
 
 ---
+## 📸 App Preview
+
+<img width="460" height="1058" alt="Screenshot 2026-01-08 214708" src="https://github.com/user-attachments/assets/2c15abd8-f384-47f1-b9e6-c78f541d4878" />
+
 
 ## 🚀 Live Preview
 
