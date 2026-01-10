@@ -15,7 +15,7 @@ A clean and minimal **Todo App** built using **React Native** and **Expo** with 
 Scan this QR code using the **Expo Go** app on Android or iOS:
 
 <img
-  src="https://qr.expo.dev/eas-update?updateId=95686cc6-e8b4-4dd3-a90b-355961b9cc76"
+  src="exp://expo.dev/@code-crusader-dev/TodoApp?channel-name=expo-go"
   width="220"
 />
 
