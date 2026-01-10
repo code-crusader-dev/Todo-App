@@ -1,84 +1,61 @@
-import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
 import { useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { COLORS } from "../utils/theme";
-import { SPACING, RADIUS } from "../utils/layout";
-import { inkShadow } from "../utils/shadow";
-
-const STORAGE_KEY = "TASKS";
+import TaskCard from "../components/Taskcard";
+import { loadTasks, saveTasks } from "../utils/storage";
 
 export default function HomeScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
 
-  // Load tasks on app start
   useEffect(() => {
-    async function loadTasks() {
-      try {
-        const storedTasks = await AsyncStorage.getItem(STORAGE_KEY);
-        if (storedTasks) {
-          setTasks(JSON.parse(storedTasks));
-        }
-      } catch (error) {
-        console.log("Failed to load tasks", error);
-      }
+    async function fetchTasks() {
+      const storedTasks = await loadTasks();
+      setTasks(storedTasks);
     }
-    loadTasks();
+    fetchTasks();
   }, []);
 
-  // Save tasks whenever they change
   useEffect(() => {
-    async function saveTasks() {
-      try {
-        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-      } catch (error) {
-        console.log("Failed to save tasks", error);
-      }
-    }
-    saveTasks();
+    saveTasks(tasks);
   }, [tasks]);
 
-  function addTaskHandler(title) {
-    setTasks((current) => [
-      { id: Date.now().toString(), title },
-      ...current,
-    ]);
+  function toggleTask(index) {
+    const updated = [...tasks];
+    updated[index].completed = !updated[index].completed;
+    setTasks(updated);
+  }
+
+  function deleteTask(index) {
+    setTasks(tasks.filter((_, i) => i !== index));
   }
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.title}>My Tasks</Text>
-        <Text style={styles.subtitle}>Stay calm. One task at a time.</Text>
-      </View>
+      <Text style={styles.title}>My Tasks</Text>
 
-      {/* Task List */}
-      {tasks.length === 0 ? (
-        <Text style={styles.emptyText}>No tasks yet 🌑</Text>
-      ) : (
-        <FlatList
-          data={tasks}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={{ paddingBottom: 120 }}
-          renderItem={({ item }) => (
-            <View style={styles.card}>
-              <Text style={styles.taskText}>{item.title}</Text>
-            </View>
-          )}
-        />
-      )}
+      <FlatList
+        data={tasks}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item, index }) => (
+          <TaskCard
+            title={item.title}
+            completed={item.completed}
+            onToggle={() => toggleTask(index)}
+            onDelete={() => deleteTask(index)}
+          />
+        )}
+        ListEmptyComponent={
+          <Text style={styles.empty}>No tasks yet</Text>
+        }
+      />
 
-      {/* Floating Add Button */}
       <Pressable
-        style={styles.fab}
+        style={styles.addButton}
         onPress={() =>
-          navigation.navigate("AddTask", {
-            onAddTask: addTaskHandler,
-          })
+          navigation.navigate("AddTask", { setTasks, tasks })
         }
       >
-        <Text style={styles.fabText}>＋</Text>
+        <Text style={styles.addText}>+ Add Task</Text>
       </Pressable>
     </View>
   );
@@ -88,62 +65,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
-    padding: SPACING.lg,
+    padding: 20,
   },
-
-  header: {
-    marginBottom: SPACING.lg,
-  },
-
   title: {
     fontSize: 28,
-    fontWeight: "600",
+    fontWeight: "bold",
     color: COLORS.text,
+    marginBottom: 20,
   },
-
-  subtitle: {
-    marginTop: SPACING.xs,
-    fontSize: 14,
-    color: COLORS.muted,
-  },
-
-  emptyText: {
+  empty: {
     color: COLORS.muted,
     textAlign: "center",
     marginTop: 40,
   },
-
-  card: {
-    backgroundColor: COLORS.card,
-    borderRadius: RADIUS.lg,
-    padding: SPACING.md,
-    marginBottom: SPACING.md,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    ...inkShadow,
-  },
-
-  taskText: {
-    fontSize: 16,
-    color: COLORS.text,
-  },
-
-  fab: {
-    position: "absolute",
-    right: SPACING.lg,
-    bottom: SPACING.xl,
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+  addButton: {
     backgroundColor: COLORS.primary,
+    padding: 15,
+    borderRadius: 12,
     alignItems: "center",
-    justifyContent: "center",
-    ...inkShadow,
+    marginTop: 20,
   },
-
-  fabText: {
-    fontSize: 32,
-    color: COLORS.background,
-    lineHeight: 36,
+  addText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
   },
 });
