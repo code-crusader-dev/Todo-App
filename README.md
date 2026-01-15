@@ -26,7 +26,7 @@ Click the button below to see the app in action instantly. No setup, no commands
 
 
 
-[![INSTALL]](https://expo.dev/accounts/code-crusader-dev/projects/TodoApp/builds/81c75223-3bd4-4cf9-a18e-40b279f4d437)
+[[INSTALL]](https://expo.dev/accounts/code-crusader-dev/projects/TodoApp/builds/81c75223-3bd4-4cf9-a18e-40b279f4d437)
 
 
 
