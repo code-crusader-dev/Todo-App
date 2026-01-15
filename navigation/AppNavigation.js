@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import CalendarScreen from "../screens/CalendarScreen";
 
 import HomeScreen from "../screens/HomeScreen";
 import AddTaskScreen from "../screens/AddTaskScreen";
@@ -20,6 +21,12 @@ export default function AppNavigator() {
           component={HomeScreen}
           options={{ title: 'My Tasks' }}
         />
+        <Stack.Screen
+          name="Calendar"
+          component={CalendarScreen}
+          options={{ title: "Calendar" }}
+        />
+
         <Stack.Screen
           name="AddTask"
           component={AddTaskScreen}

@@ -66,4 +66,32 @@ const styles = StyleSheet.create({
     color: COLORS.danger,
     fontWeight: "600",
   },
+  selector: {
+    backgroundColor: COLORS.card,
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 12,
+  },
+  selectorText: {
+    color: COLORS.text,
+  },
+  repeatRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    marginBottom: 15,
+  },
+  repeatBtn: {
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: COLORS.card,
+  },
+  repeatActive: {
+    backgroundColor: COLORS.primary,
+  },
+  clear: {
+    color: COLORS.danger,
+    marginBottom: 15,
+  },
+
 });

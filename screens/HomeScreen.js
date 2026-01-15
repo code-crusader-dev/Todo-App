@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
 import { useState, useEffect } from "react";
 import { COLORS } from "../utils/theme";
-import TaskCard from "../components/Taskcard";
+import TaskCard from "../components/TaskCard";
 import { loadTasks, saveTasks } from "../utils/storage";
+import { isTaskActive } from "../utils/scheduler";
+
 
 export default function HomeScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
@@ -19,29 +21,41 @@ export default function HomeScreen({ navigation }) {
     saveTasks(tasks);
   }, [tasks]);
 
-  function toggleTask(index) {
-    const updated = [...tasks];
-    updated[index].completed = !updated[index].completed;
-    setTasks(updated);
+  function toggleTask(id) {
+    setTasks(tasks =>
+      tasks.map(task =>
+        task.id === id
+          ? { ...task, completed: !task.completed }
+          : task
+      )
+    );
   }
 
-  function deleteTask(index) {
-    setTasks(tasks.filter((_, i) => i !== index));
+  function deleteTask(id) {
+    setTasks(tasks => tasks.filter(task => task.id !== id));
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>My Tasks</Text>
+      <Pressable
+        style={styles.calendarButton}
+        onPress={() =>
+          navigation.navigate("Calendar", { tasks, setTasks })
+        }
+      >
+        <Text style={styles.calendarText}>📅 Calendar View</Text>
+      </Pressable>
 
       <FlatList
-        data={tasks}
+        data={tasks.filter(task => isTaskActive(task))}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item, index }) => (
           <TaskCard
             title={item.title}
             completed={item.completed}
-            onToggle={() => toggleTask(index)}
-            onDelete={() => deleteTask(index)}
+            onToggle={() => toggleTask(item.id)}
+            onDelete={() => deleteTask(item.id)}
           />
         )}
         ListEmptyComponent={
@@ -90,4 +104,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
+  calendarButton: {
+  backgroundColor: COLORS.card,
+  padding: 12,
+  borderRadius: 12,
+  alignItems: "center",
+  marginBottom: 12,
+  },
+  calendarText: {
+    color: COLORS.text,
+    fontWeight: "600",
+  },
+
 });
