@@ -26,7 +26,7 @@ Click the button below to see the app in action instantly. No setup, no commands
 
 
 
-[![INSTALL](https://img.shields.io/badge/OPEN%20IN-EXPO%20GO-4F46E5?style=for-the-badge&logo=expo&logoColor=white)](https://expo.dev/accounts/code-crusader-dev/projects/TodoApp/builds/81c75223-3bd4-4cf9-a18e-40b279f4d437)
+[![INSTALL]](https://expo.dev/accounts/code-crusader-dev/projects/TodoApp/builds/81c75223-3bd4-4cf9-a18e-40b279f4d437)
 
 
 
